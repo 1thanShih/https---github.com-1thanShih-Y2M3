@@ -1,6 +1,7 @@
 # Y2M3 - YouTube URL to MP3
 
-<img width="2849" height="1344" alt="image" src="https://github.com/user-attachments/assets/ab55d67c-0e8a-4abc-bb60-a9eeb0b7c6f7" />
+<img width="1172" height="1227" alt="image" src="https://github.com/user-attachments/assets/efcfe056-def5-441e-9f93-f2d4615de438" />
+
 
 
 This is a simple conversion tool built with Flask and yt-dlp.
