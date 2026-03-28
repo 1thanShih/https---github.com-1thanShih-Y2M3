@@ -3,14 +3,14 @@
 This is a simple conversion tool built with Flask and yt-dlp.
 Paste a YouTube URL, and it will download the audio and convert it to MP3. The interface includes a progress bar along with file size and time estimations.
 
-## 你可以做什麼
+## Features
 
 - <b>Batch Processing<b/>: Paste multiple YouTube links at once (one per line).
 - <b>Adjustable Quality<b/>: Select MP3 bitrate (128 / 192 / 320 kbps).
 - <b>Pre-download Estimates<b/>: View estimated file size and processing time before starting.
 - <b>real-time Tracking<b/>: Monitor download progress live.
 
-## 執行前準備
+## Prerequisites
 
 Before running the application, ensure your system has the following installed:
 
@@ -32,7 +32,6 @@ After installation, close your current terminal and open a new one to verify:
 ffmpeg -version
 ```
 
-如果能看到版本資訊就 OK。
 
 ### Method B: Manual Installation
 
