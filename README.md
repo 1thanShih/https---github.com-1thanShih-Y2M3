@@ -1,6 +1,7 @@
 # Y2M3 - YouTube URL to MP3
 
-<img width="2848" height="1338" alt="image" src="https://github.com/user-attachments/assets/de16ed73-4960-4062-9d2a-7779f154ebf7" />
+<img width="2849" height="1344" alt="image" src="https://github.com/user-attachments/assets/ab55d67c-0e8a-4abc-bb60-a9eeb0b7c6f7" />
+
 
 This is a simple conversion tool built with Flask and yt-dlp.
 Paste a YouTube URL, and it will download the audio and convert it to MP3. The interface includes a progress bar along with file size and time estimations.
