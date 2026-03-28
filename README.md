@@ -1,32 +1,32 @@
 # Y2M3 - YouTube URL to MP3
 
-這是一個用 Flask + yt-dlp 做的簡單轉檔工具。
-你貼上 YouTube 網址，它會下載音訊並轉成 MP3，介面裡也有進度條和大小/時間預估。
+This is a simple conversion tool built with Flask and yt-dlp.
+Paste a YouTube URL, and it will download the audio and convert it to MP3. The interface includes a progress bar along with file size and time estimations.
 
 ## 你可以做什麼
 
-- 一次貼多個 YouTube 連結（每行一個）
-- 選 MP3 音質（128 / 192 / 320 kbps）
-- 先看預估檔案大小與處理時間
-- 下載時看即時進度
+- <b>Batch Processing<b/>: Paste multiple YouTube links at once (one per line).
+- <b>Adjustable Quality<b/>: Select MP3 bitrate (128 / 192 / 320 kbps).
+- <b>Pre-download Estimates<b/>: View estimated file size and processing time before starting.
+- <b>real-time Tracking<b/>: Monitor download progress live.
 
 ## 執行前準備
 
-請先確認你的電腦有這些東西：
+Before running the application, ensure your system has the following installed:
 
 - Python 3.10+
 - pip
-- FFmpeg（一定要，否則無法轉成 MP3）
+- FFmpeg (Required for MP3 conversion)
 
-## 安裝 FFmpeg（Windows）
+## Installing FFmpeg (Windows)
 
-### 方法 A：用 winget（最快）
+### Method A: via winget (Recommended/Fastest)
 
 ```powershell
 winget install --id Gyan.FFmpeg --source winget
 ```
 
-安裝後，關掉目前終端機再開一個新的，檢查：
+After installation, close your current terminal and open a new one to verify:
 
 ```powershell
 ffmpeg -version
@@ -34,16 +34,16 @@ ffmpeg -version
 
 如果能看到版本資訊就 OK。
 
-### 方法 B：手動安裝
+### Method B: Manual Installation
 
-1. 到[FFmpeg](https://www.gyan.dev/ffmpeg/builds/) 官方網站下載 Windows build
-2. 解壓縮到固定路徑，例如 `C:\ffmpeg`
-3. 把 `C:\ffmpeg\bin` 加進系統環境變數 PATH
-4. 重新開終端機後執行 `ffmpeg -version` 確認
+1. Download the Windows builds from the [FFmpeg Official Site](https://www.gyan.dev/ffmpeg/builds/).
+2. Extract the files to a permanent location (e.g.,`C:\ffmpeg`)
+3. Add `C:\ffmpeg\bin` to your system Environment Variables (PATH).
+4. Restart your terminal and run` ffmpeg -version `to confirm.
 
-## 安裝專案
+## Project Setup
 
-在專案資料夾執行：
+Run the following commands in the project directory:
 
 ```powershell
 python -m venv .venv
@@ -51,50 +51,26 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-## 啟動程式
+## Running the App
 
 ```powershell
 python app.py
 ```
 
-看到 Flask 啟動訊息後，打開瀏覽器進入：
+Once the Flask server starts, open your browser and go to:
 
 - http://127.0.0.1:5000
 
-## 使用方式
+## How to Use
 
-1. 保存先フォルダ：可填下載路徑，不填就會存到專案內的 `downloads` 資料夾
-2. YouTube の URL：一行一個連結
-3. 音質選擇：128 / 192 / 320 kbps
-4. 先按「サイズ・時間見積」看預估（可選）
-5. 按「ダウンロード開始」開始轉檔
+1. Download Folder: Specify a save path (defaults to the downloads folder within the project).
+2. YouTube URLs: Enter links (one per line).
+3. Audio Quality: Choose between 128, 192, or 320 kbps.
+4. Estimate (Optional): Click "Estimate Size/Time" to see predictions.
+5. Start: Click "Start Download" to begin the conversion.
 
-## 常見問題
 
-### 1) `ffmpeg` 指令找不到
+## Disclaimer
 
-代表 FFmpeg 還沒安裝，或 PATH 沒設好。
-先確認安裝，再重新開終端機測試：
-
-```powershell
-ffmpeg -version
-```
-
-### 2) 已安裝 FFmpeg 但還是失敗
-
-- 關掉 VS Code 終端機重開
-- 確認你輸入的是 `ffmpeg -version`（不是 `ffmpeg --`）
-- 用 `where ffmpeg` 看看系統抓到哪個路徑
-
-### 3) 下載失敗或被擋
-
-YouTube 可能改版或影片有限制，先更新 yt-dlp：
-
-```powershell
-pip install -U yt-dlp
-```
-
-## 注意事項
-
-- 請只下載你有權限處理的內容
-- 本工具僅供學習與個人用途
+- Please only download content you have the right to access.
+- This tool is intended for educational and personal use only.
