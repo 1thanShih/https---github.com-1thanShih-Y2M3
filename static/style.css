@@ -1,0 +1,285 @@
+:root {
+    --bg-color: #f4f6f8;
+    --text-main: #334155;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --primary-blue: #3b82f6;
+    --primary-blue-hover: #2563eb;
+    --card-bg: #ffffff;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Noto Sans JP', 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    position: relative;
+    padding-bottom: 40px; 
+}
+
+.glow-background {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60vw;
+    height: 50vh;
+    background: radial-gradient(circle, rgba(224, 236, 255, 0.8) 0%, rgba(244, 246, 248, 0) 70%);
+    filter: blur(100px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.container {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 40px;
+    width: 100%;
+    /* 將預設寬度改為 460px，確保內部空間剛好是 380px，消除動畫抖動 */
+    max-width: 460px; 
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+    z-index: 1;
+    /* 使用更滑順的 cubic-bezier 曲線，並稍微拉長一點點時間到 0.6s */
+    transition: max-width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.layout-wrapper {
+    display: flex;
+    gap: 0;
+    transition: gap 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    flex-wrap: nowrap;
+}
+
+.left-panel {
+    width: 100%; 
+    /* 移除左側的過渡動畫，因為寬度不再改變，徹底消除抖動 */
+}
+
+.right-panel {
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container.show-preview {
+    max-width: 1100px; 
+}
+
+.container.show-preview .layout-wrapper {
+    gap: 40px;
+}
+
+.container.show-preview .left-panel {
+    width: 380px; 
+    flex-shrink: 0; 
+}
+
+.container.show-preview .right-panel {
+    width: 100%; 
+    opacity: 1;
+}
+
+.header-section {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.header-section .pixel-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 16px; 
+    font-weight: 400;
+    margin: 0 0 12px 0;
+    color: var(--primary-blue);
+    line-height: 1.6;
+    text-shadow: 2px 2px 0px #e2e8f0, 4px 4px 0px rgba(59, 130, 246, 0.15);
+}
+
+.header-section .subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f8fafc;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.form-select {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f8fafc;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.estimate-box {
+    background-color: #eff6ff;
+    border: 1px dashed #93c5fd;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 18px;
+    font-size: 12px;
+    color: #1e3a8a;
+    display: flex;
+    justify-content: space-around;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.action-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.btn {
+    flex: 1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-family: inherit;
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover { background-color: #f1f5f9; }
+
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: #ffffff;
+}
+
+.btn-primary:hover { background-color: var(--primary-blue-hover); }
+
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.status {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.preview-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+#ytPreview {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+    border-radius: 8px;
+    background-color: #000;
+}
+
+.progress-container {
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.progress-container.show { opacity: 1; }
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 8px;
+    background-color: #e2e8f0;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #60a5fa, #3b82f6);
+    border-radius: 999px;
+    transition: width 0.3s ease;
+}
+
+/* ⚠️ 困難內容標記：解決白邊透明字隱形的技巧
+ * 1. position: fixed 確保它永遠釘在瀏覽器畫面的正下方，不會被滾動軸影響。
+ * 2. 為了讓白色的描邊 (-webkit-text-stroke: 1px #fff) 在淺灰色背景上看得見，
+ * 我們必須加上一層非常淡的陰影 (filter: drop-shadow)。這會在白邊底下墊一層微弱的黑光，
+ * 讓字體立刻從背景中浮現出來，保留高級感又不會太突兀。
+ */
+.footer-powered {
+    position: fixed; 
+    bottom: 20px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    font-family: 'Press Start 2P', monospace; /* 強制套用像素字體 */
+    font-size: 10px; /* 字體大小適中 */
+    color: #f0fdf4; 
+    -webkit-text-stroke: 1px #2182c3; 
+    text-shadow: 
+        -1px -1px 0px #ffffff,
+        2px 2px 0px rgba(114, 110, 218, 0.626),
+        0px 0px 10px rgba(167, 243, 208, 0.5);
+    letter-spacing: 2px; 
+    text-transform: uppercase; 
+    pointer-events: none; 
+    z-index: 100; 
+}

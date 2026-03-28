@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y2M3</title>
+    
+    <link rel="icon" href="{{ url_for('static', filename='icon.png') }}?v=1" type="image/png">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon.png') }}?v=1" type="image/png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="glow-background"></div>
+
+    <div class="container" id="mainContainer">
+        <div class="layout-wrapper">
+            
+            <div class="left-panel">
+                <div class="header-section">
+                    <h1 class="pixel-title">YouTube URL to MP3</h1>
+                    <p class="subtitle">YouTube動画をMP3に変換するツール。</p>
+                </div>
+                
+                <div class="form-group">
+                    <label>保存先フォルダ（空白は「downloads」）：</label>
+                    <input type="text" id="savePath" placeholder="例：C:\Users\USER\Music">
+                </div>
+
+                <div class="form-group">
+                    <label>YouTubeのURL（複数入力可）：</label>
+                    <textarea id="urlInput" rows="4" placeholder="https://www.youtube.com/..."></textarea>
+                </div>
+
+                <div class="form-group" style="display: flex; gap: 10px; align-items: center;">
+                    <div style="flex: 1;">
+                        <label>音質を選択：</label>
+                        <select id="qualitySelect" class="form-select">
+                            <option value="320">高音質 (320 kbps)</option>
+                            <option value="192" selected>標準音質 (192 kbps)</option>
+                            <option value="128">低音質 (128 kbps)</option>
+                        </select>
+                    </div>
+                    <button id="estimateBtn" class="btn btn-secondary" style="margin-top: 24px; flex: 0.8; font-size: 11px;">
+                        サイズ・時間見積
+                    </button>
+                </div>
+
+                <div id="estimateResult" class="estimate-box" style="display: none;">
+                    <div class="est-item">予想合計サイズ: <span id="estSize" style="font-weight: bold; color: var(--primary-blue);">-- MB</span></div>
+                    <div class="est-item">予想処理時間: <span id="estTime" style="font-weight: bold; color: var(--primary-blue);">-- 秒</span></div>
+                </div>
+
+                <div class="action-group">
+                    <button id="downloadBtn" class="btn btn-primary" style="width: 100%;">
+                    ダウンロード開始
+                    </button>
+                </div>
+
+                <div id="statusMessage" class="status"></div>
+            </div>
+
+            <div class="right-panel">
+                <div class="preview-label">動画プレビュー</div>
+                <iframe id="ytPreview" src="" allowfullscreen></iframe>
+                
+                <div class="progress-container" id="progressContainer">
+                    <div class="progress-label">
+                        <span id="progressText">準備中...</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="progressBarFill"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer-powered">power by shhhih</div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
